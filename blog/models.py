@@ -3,7 +3,6 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -17,3 +16,12 @@ class Post(models.Model):
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.date <= now
+
+
+class Tag(models.Model):
+    # post = models.ForeignKey(Post, on_delete=models.CASCADE, default=None)
+    name = models.CharField(max_length=50, null=True, default=None)
+
+    def __str__(self):
+        return self.name
+
