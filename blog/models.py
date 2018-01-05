@@ -19,8 +19,8 @@ class Post(models.Model):
 
 
 class Tag(models.Model):
-    # post = models.ForeignKey(Post, on_delete=models.CASCADE, default=None)
-    name = models.CharField(max_length=50, null=True, default=None)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=False)
+    name = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.name
